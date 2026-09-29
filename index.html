@@ -149,7 +149,7 @@
         .custom-radio {
             display: block;
             width: 100%;
-            padding: 0.6rem 0.5rem;
+            padding: 0.65rem 0.5rem;
             background-color: var(--bg-color);
             border: 1px solid var(--border-color);
             border-radius: 6px;
@@ -293,7 +293,7 @@
             color: var(--accent);
         }
 
-        /* Desktop Layout Adaptations */
+        /* Desktop Layout Rules */
         @media (min-width: 601px) {
             .config-bar {
                 flex-direction: row;
@@ -320,7 +320,15 @@
             }
         }
 
+        /* Mobile Layout Optimizations */
         @media (max-width: 600px) {
+            .radio-group {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .custom-radio {
+                padding: 0.75rem 1rem;
+            }
             .output-header {
                 flex-direction: column;
                 align-items: stretch;
@@ -354,8 +362,4 @@
                         <label class="radio-label">
                             <input type="radio" name="prompt-style" value="expert" checked>
                             <span class="custom-radio">Expert</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="prompt-style" value="creative">
-                            <span class="custom-radio">Creative</span>
                         </label>
