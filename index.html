@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prompt-Fi: AI Prompt Optimizer</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- Relative paths to force GitHub Pages to read the styles -->
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
     <div class="container">
@@ -56,15 +57,15 @@
             <section class="card description-card">
                 <h2>About Contextual Styles</h2>
                 <div class="description-grid">
-                    <div class="desc-item">
+                    <div class="desc-item" id="desc-expert">
                         <h3>🎓 Expert Style</h3>
                         <p>Applies an authoritative framework to your idea. It instructs the AI to look at structural hidden constraints, performance metrics, and optimization paths like a seasoned industry specialist.</p>
                     </div>
-                    <div class="desc-item">
+                    <div class="desc-item" id="desc-creative">
                         <h3>🎨 Creative Style</h3>
                         <p>Breaks conventional boundaries. It instructs the AI to leverage dynamic storytelling strategies, metaphors, and strong visual variations designed for emotional impact.</p>
                     </div>
-                    <div class="desc-item">
+                    <div class="desc-item" id="desc-simple">
                         <h3>⚡ Simple Style</h3>
                         <p>Strips away all complex jargon. It forces the AI to summarize concepts into plain English using highly focused structural bullet points or ultra-brief instructions.</p>
                     </div>
@@ -72,7 +73,7 @@
             </section>
         </main>
     </div>
-    <script src="script.js"></script>
+    <!-- Relative path to load the engine execution script -->
+    <script src="./script.js"></script>
 </body>
 </html>
-
