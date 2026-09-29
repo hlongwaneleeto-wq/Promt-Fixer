@@ -6,7 +6,6 @@
     <title>Prompt-Fi: AI Prompt Optimizer</title>
     
     <!-- 💰 GOOGLE ADSENSE INTEGRATION CODE -->
-    <!-- Replace 'ca-pub-XXXXXXXXXXXXXXXX' with your actual AdSense Publisher ID -->
     <script async src="https://googlesyndication.com" crossorigin="anonymous"></script>
 
     <style>
@@ -199,7 +198,6 @@
             cursor: not-allowed;
         }
 
-        /* 💰 Ad placement banner styling */
         .ad-container {
             text-align: center;
             margin: 1rem 0;
@@ -301,21 +299,21 @@
                 <div class="style-selector">
                     <span style="font-weight:600; font-size:0.95rem; color:#fff; margin-right: 0.5rem;">Contextual Style:</span>
                     <div class="radio-group">
+                        <!-- ⚡ FIXED: Added explicit values directly into HTML tags -->
                         <label class="radio-label">
-                            <input type="radio" name="prompt-style" value="expert" checked>
+                            <input type="radio" name="prompt-style" id="style-expert" value="expert" checked>
                             <span class="custom-radio">Expert</span>
                         </label>
                         <label class="radio-label">
-                            <input type="radio" name="prompt-style" value="creative">
+                            <input type="radio" name="prompt-style" id="style-creative" value="creative">
                             <span class="custom-radio">Creative</span>
                         </label>
                         <label class="radio-label">
-                            <input type="radio" name="prompt-style" value="simple">
+                            <input type="radio" name="prompt-style" id="style-simple" value="simple">
                             <span class="custom-radio">Simple</span>
                         </label>
                     </div>
                 </div>
-                <!-- ⚡ FIXED: Added explicit onclick trigger directly inside the button element -->
                 <button id="optimize-btn" class="btn primary-btn" onclick="runPromptOptimization()">Optimize Instruction</button>
             </section>
 
@@ -328,3 +326,5 @@
 
             <!-- 💰 GOOGLE ADSENSE DISPLAY BANNER UNIT -->
             <div class="ad-container">
+                <ins class="adsbygoogle"
+                     style="display:block"
