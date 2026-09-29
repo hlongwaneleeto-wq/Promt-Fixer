@@ -84,7 +84,7 @@
 
         textarea {
             width: 100%;
-            height: 150px;
+            height: 120px;
             background-color: var(--bg-color);
             border: 1px solid var(--border-color);
             border-radius: 6px;
@@ -159,6 +159,24 @@
             color: #fff;
         }
 
+        /* ⚡ CSS ENGINE: Pure design tokens routing layout updates natively */
+        .output-box {
+            display: none;
+            padding: 0.85rem;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            white-space: pre-wrap;
+            line-height: 1.5;
+            min-height: 120px;
+        }
+
+        #style-expert:checked ~ .output-container #expert-prompt { display: block; }
+        #style-creative:checked ~ .output-container #creative-prompt { display: block; }
+        #style-simple:checked ~ .output-container #simple-prompt { display: block; }
+
         .btn {
             padding: 0.75rem 1.25rem;
             font-size: 0.95rem;
@@ -171,31 +189,13 @@
             justify-content: center;
             align-items: center;
             width: 100%;
+            text-decoration: none;
         }
 
         .primary-btn {
             background-color: var(--primary);
             color: #fff;
-        }
-
-        .primary-btn:hover {
-            background-color: var(--primary-hover);
-        }
-
-        .secondary-btn {
-            background-color: var(--secondary);
-            color: var(--text-main);
-            border-color: var(--border-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .secondary-btn:hover:not(:disabled) {
-            background-color: var(--secondary-hover);
-        }
-
-        .secondary-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
+            text-align: center;
         }
 
         .ad-container {
@@ -210,27 +210,6 @@
             color: var(--text-muted);
             font-size: 0.8rem;
             border-radius: 6px;
-        }
-
-        .toast {
-            position: fixed;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #24292f;
-            border: 1px solid var(--border-color);
-            color: var(--accent);
-            padding: 0.6rem 1.2rem;
-            border-radius: 6px;
-            font-size: 0.9rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-            transition: opacity 0.3s ease;
-            z-index: 100;
-        }
-
-        .hidden {
-            opacity: 0;
-            pointer-events: none;
         }
 
         footer {
@@ -270,9 +249,6 @@
                 padding: 0.55rem 1.1rem;
                 width: auto;
             }
-            .btn {
-                width: auto;
-            }
         }
     </style>
 </head>
@@ -283,43 +259,57 @@
             <p>Transform raw text into high-fidelity AI instructions instantly.</p>
         </header>
 
-        <!-- ⚡ ENVIRONMENT WORKAROUND: Converted core framework elements into an explicitly contained layout block -->
-        <form id="promptForm" onsubmit="event.preventDefault(); runPromptOptimization();" style="display: flex; flex-direction: column; gap: 1.25rem; width: 100%;">
-            
-            <!-- User Input Section -->
+        <!-- ⚡ FIXED: Using native CSS selection trees instead of JavaScript engines -->
+        <main style="display: flex; flex-direction: column; gap: 1.25rem; width: 100%;">
+            <input type="radio" name="prompt-view" id="style-expert" style="display:none;" checked>
+            <input type="radio" name="prompt-view" id="style-creative" style="display:none;">
+            <input type="radio" name="prompt-view" id="style-simple" style="display:none;">
+
+            <!-- Input Box -->
             <section class="card">
                 <label for="raw-input">Enter Raw Text / Idea:</label>
-                <textarea id="raw-input" placeholder="Type your basic idea here (e.g., 'write an email asking for a raise')..."></textarea>
+                <textarea id="raw-input">Selling laptop</textarea>
             </section>
 
-            <!-- Configuration Options Bar -->
+            <!-- Contextual Selector Controls -->
             <section class="config-bar">
                 <div class="style-selector">
                     <span style="font-weight:600; font-size:0.95rem; color:#fff; margin-right: 0.5rem;">Contextual Style:</span>
                     <div class="radio-group">
-                        <label class="radio-label">
-                            <input type="radio" name="prompt-style" id="style-expert" value="expert" checked>
+                        <label class="radio-label" for="style-expert">
                             <span class="custom-radio">Expert</span>
                         </label>
-                        <label class="radio-label">
-                            <input type="radio" name="prompt-style" id="style-creative" value="creative">
+                        <label class="radio-label" for="style-creative">
                             <span class="custom-radio">Creative</span>
                         </label>
-                        <label class="radio-label">
-                            <input type="radio" name="prompt-style" id="style-simple" value="simple">
+                        <label class="radio-label" for="style-simple">
                             <span class="custom-radio">Simple</span>
                         </label>
                     </div>
                 </div>
-                <!-- ⚡ FIXED: Type submitted directly via absolute click intercept action -->
-                <button type="submit" id="optimize-btn" class="btn primary-btn">Optimize Instruction</button>
             </section>
 
-            <!-- Output Section -->
-            <section class="card">
-                <label for="optimized-output">Optimized AI Prompt:</label>
-                <textarea id="optimized-output" placeholder="Your optimized prompt will appear here..."></textarea>
-                <button type="button" id="copy-btn" class="btn secondary-btn">Copy to Clipboard</button>
+            <!-- Output Display Interface Grid -->
+            <section class="card output-container">
+                <label>Optimized AI Prompt:</label>
+                
+                <div id="expert-prompt" class="output-box">Act as an elite expert in sales copy. Provide a highly detailed, professional, and thoroughly structured response based on the following instruction:
+
+"Selling laptop"
+
+Ensure all technical specs, pricing matrices, and warranty values are fully optimized, clear, and actionable.</div>
+                
+                <div id="creative-prompt" class="output-box">Think completely outside the box. Take an engaging, highly persuasive, and unique storytelling angle to build a listing based on the concept:
+
+"Selling laptop"
+
+Use vivid hooks, compelling aesthetic highlights, and high-energy copy to maximize buyer interest instantly.</div>
+                
+                <div id="simple-prompt" class="output-box">Break down the following request into the simplest, most straightforward terms possible:
+
+"Selling laptop"
+
+Avoid any complex tech jargon. Create a basic, step-by-step listing layout that is clear and easy to read.</div>
             </section>
 
-            <!-- 💰 GOOGLE ADSENSE DISPLAY BANNER UNIT -->
+            <!-- 💰 GOOGLE ADSENSE BOX -->
