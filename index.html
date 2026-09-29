@@ -35,7 +35,7 @@
             color: var(--text-main);
             display: flex;
             justify-content: center;
-            padding: 2rem 1rem;
+            padding: 1.5rem 1rem;
             min-height: 100vh;
         }
 
@@ -44,12 +44,13 @@
             max-width: 800px;
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 1.25rem;
         }
 
         header {
             text-align: center;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
+            padding: 0 0.5rem;
         }
 
         header h1 {
@@ -62,6 +63,7 @@
         header p {
             color: var(--text-muted);
             font-size: 1rem;
+            line-height: 1.4;
         }
 
         .card {
@@ -72,29 +74,31 @@
             display: flex;
             flex-direction: column;
             gap: 0.75rem;
-            margin-bottom: 1rem;
+            width: 100%;
         }
 
         label {
             font-weight: 600;
-            font-size: 0.9rem;
-            color: var(--text-main);
+            font-size: 0.95rem;
+            color: #fff;
             display: block;
-            margin-bottom: 0.5rem;
         }
 
+        /* 🎯 FIXED & ALIGNED TEXTAREA PROPERTIES */
         textarea {
             width: 100%;
             height: 150px;
             background-color: var(--bg-color);
             border: 1px solid var(--border-color);
             border-radius: 6px;
-            padding: 0.75rem;
+            padding: 0.85rem;
             color: var(--text-main);
             font-size: 0.95rem;
-            resize: vertical;
+            line-height: 1.5;
+            resize: none; /* Stops erratic manual scaling on mobile webview */
             outline: none;
             transition: border-color 0.2s;
+            display: block;
         }
 
         textarea:focus {
@@ -110,14 +114,20 @@
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 6px;
-            padding: 1rem 1.25rem;
-            margin-bottom: 1rem;
+            padding: 1.25rem;
+            width: 100%;
         }
 
         .style-selector {
             display: flex;
             align-items: center;
             gap: 1rem;
+        }
+
+        .label {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #fff;
         }
 
         .radio-group {
@@ -139,13 +149,15 @@
 
         .custom-radio {
             display: inline-block;
-            padding: 0.5rem 1rem;
+            padding: 0.55rem 1.1rem;
             background-color: var(--bg-color);
             border: 1px solid var(--border-color);
             border-radius: 6px;
             font-size: 0.85rem;
-            font-weight: 500;
+            font-weight: 600;
+            color: var(--text-main);
             transition: all 0.2s;
+            text-align: center;
         }
 
         .radio-label input:checked + .custom-radio {
@@ -155,18 +167,22 @@
         }
 
         .btn {
-            padding: 0.6rem 1.2rem;
-            font-size: 0.9rem;
+            padding: 0.65rem 1.25rem;
+            font-size: 0.95rem;
             font-weight: 600;
             border-radius: 6px;
             cursor: pointer;
             border: 1px solid transparent;
             transition: background-color 0.2s;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .primary-btn {
             background-color: var(--primary);
             color: #fff;
+            width: 100%; /* Spans full card perfectly */
         }
 
         .primary-btn:hover {
@@ -196,7 +212,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 0.5rem;
+            width: 100%;
+            gap: 1rem;
         }
 
         .toast {
@@ -220,8 +237,8 @@
 
         .description-card h2 {
             color: #fff;
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 0.5rem;
         }
@@ -229,12 +246,12 @@
         .description-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin-top: 0.5rem;
+            gap: 0.75rem;
+            margin-top: 0.25rem;
         }
 
         .desc-item {
-            padding: 0.75rem;
+            padding: 0.85rem;
             border-radius: 6px;
             background-color: rgba(255, 255, 255, 0.02);
             border: 1px solid transparent;
@@ -242,9 +259,9 @@
         }
 
         .desc-item h3 {
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: var(--accent);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
         }
 
         .desc-item p {
@@ -260,7 +277,7 @@
 
         footer {
             text-align: center;
-            margin-top: 2rem;
+            margin-top: 1rem;
             padding-top: 1rem;
             border-top: 1px solid var(--border-color);
         }
@@ -276,32 +293,40 @@
             color: var(--accent);
         }
 
+        /* 📱 RESPONSIVE MOBILE ALIGNMENT OVERRIDES */
         @media (max-width: 600px) {
             .config-bar {
                 flex-direction: column;
                 align-items: stretch;
+                gap: 1.25rem;
             }
             .style-selector {
                 flex-direction: column;
-                align-items: flex-start;
-                gap: 0.5rem;
+                align-items: stretch;
+                gap: 0.75rem;
             }
             .radio-group {
                 width: 100%;
+                display: flex;
             }
             .radio-label {
                 flex: 1;
-                text-align: center;
             }
             .custom-radio {
                 display: block;
-            }
-            .primary-btn {
                 width: 100%;
             }
             .description-grid {
                 grid-template-columns: 1fr;
-                gap: 1rem;
+                gap: 0.75rem;
+            }
+            .output-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            .output-header .btn {
+                width: 100%;
             }
         }
     </style>
@@ -313,7 +338,7 @@
             <p>Transform raw text into high-fidelity AI instructions instantly.</p>
         </header>
 
-        <main>
+        <main style="display: flex; flex-direction: column; gap: 1.25rem; width: 100%;">
             <!-- User Input Section -->
             <section class="card">
                 <label for="raw-input">Enter Raw Text / Idea:</label>
@@ -330,20 +355,3 @@
                             <span class="custom-radio">Expert</span>
                         </label>
                         <label class="radio-label">
-                            <input type="radio" name="prompt-style" value="creative">
-                            <span class="custom-radio">Creative</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="prompt-style" value="simple">
-                            <span class="custom-radio">Simple</span>
-                        </label>
-                    </div>
-                </div>
-                <button id="optimize-btn" class="btn primary-btn">Optimize Instruction</button>
-            </section>
-
-            <!-- Final System Output Section -->
-            <section class="card output-card">
-                <div class="output-header">
-                    <label for="optimized-output">Optimized AI Prompt:</label>
-                    <button id="copy-btn" class="btn secondary-btn" disabled>Copy to Clipboard</button>
