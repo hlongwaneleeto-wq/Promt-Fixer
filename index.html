@@ -249,10 +249,6 @@
             text-decoration: none;
         }
 
-        footer a:hover {
-            color: var(--accent);
-        }
-
         @media (min-width: 601px) {
             .config-bar {
                 flex-direction: row;
@@ -287,7 +283,9 @@
             <p>Transform raw text into high-fidelity AI instructions instantly.</p>
         </header>
 
-        <main style="display: flex; flex-direction: column; gap: 1.25rem; width: 100%;">
+        <!-- ⚡ ENVIRONMENT WORKAROUND: Converted core framework elements into an explicitly contained layout block -->
+        <form id="promptForm" onsubmit="event.preventDefault(); runPromptOptimization();" style="display: flex; flex-direction: column; gap: 1.25rem; width: 100%;">
+            
             <!-- User Input Section -->
             <section class="card">
                 <label for="raw-input">Enter Raw Text / Idea:</label>
@@ -299,7 +297,6 @@
                 <div class="style-selector">
                     <span style="font-weight:600; font-size:0.95rem; color:#fff; margin-right: 0.5rem;">Contextual Style:</span>
                     <div class="radio-group">
-                        <!-- ⚡ FIXED: Added explicit values directly into HTML tags -->
                         <label class="radio-label">
                             <input type="radio" name="prompt-style" id="style-expert" value="expert" checked>
                             <span class="custom-radio">Expert</span>
@@ -314,17 +311,15 @@
                         </label>
                     </div>
                 </div>
-                <button id="optimize-btn" class="btn primary-btn" onclick="runPromptOptimization()">Optimize Instruction</button>
+                <!-- ⚡ FIXED: Type submitted directly via absolute click intercept action -->
+                <button type="submit" id="optimize-btn" class="btn primary-btn">Optimize Instruction</button>
             </section>
 
             <!-- Output Section -->
             <section class="card">
                 <label for="optimized-output">Optimized AI Prompt:</label>
-                <textarea id="optimized-output" readonly placeholder="Your optimized prompt will appear here..."></textarea>
-                <button id="copy-btn" class="btn secondary-btn" disabled>Copy to Clipboard</button>
+                <textarea id="optimized-output" placeholder="Your optimized prompt will appear here..."></textarea>
+                <button type="button" id="copy-btn" class="btn secondary-btn">Copy to Clipboard</button>
             </section>
 
             <!-- 💰 GOOGLE ADSENSE DISPLAY BANNER UNIT -->
-            <div class="ad-container">
-                <ins class="adsbygoogle"
-                     style="display:block"
