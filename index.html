@@ -315,7 +315,8 @@
                         </label>
                     </div>
                 </div>
-                <button id="optimize-btn" class="btn primary-btn">Optimize Instruction</button>
+                <!-- ⚡ FIXED: Added explicit onclick trigger directly inside the button element -->
+                <button id="optimize-btn" class="btn primary-btn" onclick="runPromptOptimization()">Optimize Instruction</button>
             </section>
 
             <!-- Output Section -->
@@ -327,6 +328,3 @@
 
             <!-- 💰 GOOGLE ADSENSE DISPLAY BANNER UNIT -->
             <div class="ad-container">
-                <!-- Once your AdSense is active, replace the placeholder below with your ad unit script -->
-                <ins class="adsbygoogle"
-                     style="display:block"
