@@ -6,7 +6,6 @@
     <title>Prompt-Fi: AI Prompt Optimizer</title>
     
     <!-- 💰 GOOGLE ADSENSE INTEGRATION CODE -->
-    <!-- Replace 'ca-pub-XXXXXXXXXXXXXXXX' with your real publisher ID when approved -->
     <script async src="https://googlesyndication.com" crossorigin="anonymous"></script>
 
     <style>
@@ -273,7 +272,6 @@
             text-decoration: none;
         }
 
-        /* Responsive Desktop Rules */
         @media (min-width: 601px) {
             .config-bar {
                 flex-direction: row;
@@ -321,7 +319,7 @@
             <!-- Configuration Options Bar -->
             <section class="config-bar">
                 <div class="style-selector">
-                    <span style="font-weight:600; font-size:0.95rem; color:#fff;">Contextual Style:</span>
+                    <span style="font-weight:600; font-size:0.95rem; color:#fff; margin-right: 0.5rem;">Contextual Style:</span>
                     <div class="radio-group">
                         <label class="radio-label">
                             <input type="radio" name="prompt-style" value="expert" checked>
@@ -340,6 +338,7 @@
                 <button id="optimize-btn" class="btn primary-btn">Optimize Instruction</button>
             </section>
 
-            <!-- Output Section -->
+            <!-- Output Section (COMPLETELY FIXED) -->
             <section class="card">
                 <label for="optimized-output">Optimized AI Prompt:</label>
+                <button id="copy-btn" class="btn secondary-btn" disabled>Copy to Clipboard</button>
