@@ -1,36 +1,78 @@
-# This is a basic workflow to help you get started with Actions
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt-Fi: AI Prompt Optimizer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Prompt-Fi</h1>
+            <p>Transform raw text into high-fidelity AI instructions instantly.</p>
+        </header>
 
-name: CI
+        <main>
+            <!-- Input Section -->
+            <section class="card">
+                <label for="raw-input">Enter Raw Text / Idea:</label>
+                <textarea id="raw-input" placeholder="Type your basic idea here (e.g., 'write an email asking for a raise')..."></textarea>
+            </section>
 
-# Controls when the workflow will run
-on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+            <!-- Configuration Section -->
+            <section class="config-bar">
+                <div class="style-selector">
+                    <span class="label">Contextual Style:</span>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="prompt-style" value="expert" checked>
+                            <span class="custom-radio">Expert</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="prompt-style" value="creative">
+                            <span class="custom-radio">Creative</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="prompt-style" value="simple">
+                            <span class="custom-radio">Simple</span>
+                        </label>
+                    </div>
+                </div>
+                <button id="optimize-btn" class="btn primary-btn">Optimize Instruction</button>
+            </section>
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+            <!-- Output Section -->
+            <section class="card output-card">
+                <div class="output-header">
+                    <label for="optimized-output">Optimized AI Prompt:</label>
+                    <button id="copy-btn" class="btn secondary-btn" disabled>Copy to Clipboard</button>
+                </div>
+                <textarea id="optimized-output" readonly placeholder="Your optimized prompt will appear here..."></textarea>
+                <div id="toast" class="toast hidden">Copied to clipboard!</div>
+            </section>
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
-jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+            <!-- Extended Description Section -->
+            <section class="card description-card">
+                <h2>About Contextual Styles</h2>
+                <div class="description-grid">
+                    <div class="desc-item">
+                        <h3>🎓 Expert Style</h3>
+                        <p>Applies an authoritative framework to your idea. It instructs the AI to look at structural hidden constraints, performance metrics, and optimization paths like a seasoned industry specialist.</p>
+                    </div>
+                    <div class="desc-item">
+                        <h3>🎨 Creative Style</h3>
+                        <p>Breaks conventional boundaries. It instructs the AI to leverage dynamic storytelling strategies, metaphors, and strong visual variations designed for emotional impact.</p>
+                    </div>
+                    <div class="desc-item">
+                        <h3>⚡ Simple Style</h3>
+                        <p>Strips away all complex jargon. It forces the AI to summarize concepts into plain English using highly focused structural bullet points or ultra-brief instructions.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
