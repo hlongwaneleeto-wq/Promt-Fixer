@@ -6,6 +6,7 @@
     <title>Prompt-Fi: AI Prompt Optimizer</title>
     
     <!-- 💰 GOOGLE ADSENSE INTEGRATION CODE -->
+    <!-- Replace 'ca-pub-XXXXXXXXXXXXXXXX' with your actual AdSense Publisher ID -->
     <script async src="https://googlesyndication.com" crossorigin="anonymous"></script>
 
     <style>
@@ -198,6 +199,21 @@
             cursor: not-allowed;
         }
 
+        /* 💰 Ad placement banner styling */
+        .ad-container {
+            text-align: center;
+            margin: 1rem 0;
+            min-height: 90px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px dashed var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            border-radius: 6px;
+        }
+
         .toast {
             position: fixed;
             bottom: 2rem;
@@ -219,57 +235,24 @@
             pointer-events: none;
         }
 
-        .description-card h2 {
-            color: #fff;
-            font-size: 1.25rem;
-            margin-bottom: 0.25rem;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 0.5rem;
-        }
-
-        .description-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 0.75rem;
-            margin-top: 0.5rem;
-        }
-
-        .desc-item {
-            padding: 0.85rem;
-            border-radius: 6px;
-            background-color: rgba(255, 255, 255, 0.02);
-            border: 1px solid transparent;
-            transition: all 0.2s ease;
-        }
-
-        .desc-item h3 {
-            font-size: 0.95rem;
-            color: var(--accent);
-            margin-bottom: 0.4rem;
-        }
-
-        .desc-item p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            line-height: 1.4;
-        }
-
-        .desc-item.active-style {
-            border-color: var(--accent);
-            background-color: rgba(88, 166, 255, 0.05);
-        }
-
         footer {
             text-align: center;
             margin-top: 1rem;
             padding-top: 1rem;
             border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
         }
 
         footer a {
             color: var(--text-muted);
             font-size: 0.85rem;
             text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--accent);
         }
 
         @media (min-width: 601px) {
@@ -295,9 +278,6 @@
             }
             .btn {
                 width: auto;
-            }
-            .description-grid {
-                grid-template-columns: repeat(3, 1fr);
             }
         }
     </style>
@@ -338,7 +318,15 @@
                 <button id="optimize-btn" class="btn primary-btn">Optimize Instruction</button>
             </section>
 
-            <!-- Output Section (COMPLETELY FIXED) -->
+            <!-- Output Section -->
             <section class="card">
                 <label for="optimized-output">Optimized AI Prompt:</label>
+                <textarea id="optimized-output" readonly placeholder="Your optimized prompt will appear here..."></textarea>
                 <button id="copy-btn" class="btn secondary-btn" disabled>Copy to Clipboard</button>
+            </section>
+
+            <!-- 💰 GOOGLE ADSENSE DISPLAY BANNER UNIT -->
+            <div class="ad-container">
+                <!-- Once your AdSense is active, replace the placeholder below with your ad unit script -->
+                <ins class="adsbygoogle"
+                     style="display:block"
