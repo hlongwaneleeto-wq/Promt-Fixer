@@ -6,7 +6,7 @@
     <title>Prompt-Fi: AI Prompt Optimizer</title>
     
     <!-- 💰 GOOGLE ADSENSE INTEGRATION CODE -->
-    <!-- Replace ca-pub-XXXXXXXXXXXXXXXX with your real publisher ID when approved -->
+    <!-- Replace 'ca-pub-XXXXXXXXXXXXXXXX' with your real publisher ID when approved -->
     <script async src="https://googlesyndication.com" crossorigin="anonymous"></script>
 
     <style>
@@ -258,6 +258,13 @@
             background-color: rgba(88, 166, 255, 0.05);
         }
 
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
         footer a {
             color: var(--text-muted);
             font-size: 0.85rem;
@@ -307,13 +314,13 @@
         </header>
 
         <main>
-            <!-- User Input -->
+            <!-- User Input Section -->
             <section class="card">
                 <label for="raw-input">Enter Raw Text / Idea:</label>
                 <textarea id="raw-input" placeholder="Type your basic idea here (e.g., 'write an email asking for a raise')..."></textarea>
             </section>
 
-            <!-- Configuration Options -->
+            <!-- Configuration Options Bar -->
             <section class="config-bar">
                 <div class="style-selector">
                     <span class="label">Contextual Style:</span>
@@ -335,10 +342,8 @@
                 <button id="optimize-btn" class="btn primary-btn">Optimize Instruction</button>
             </section>
 
-            <!-- Final System Output -->
+            <!-- Final System Output Section -->
             <section class="card output-card">
                 <div class="output-header">
                     <label for="optimized-output">Optimized AI Prompt:</label>
                     <button id="copy-btn" class="btn secondary-btn" disabled>Copy to Clipboard</button>
-                </div>
-                <textarea id="optimized-output" readonly placeholder="Your optimized prompt will appear here..."></textarea>
