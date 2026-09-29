@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prompt-Fi: AI Prompt Optimizer</title>
+    
+    <!-- 💰 GOOGLE ADSENSE INTEGRATION CODE -->
+    <!-- Replace ca-pub-XXXXXXXXXXXXXXXX with your real publisher ID when approved -->
+    <script async src="https://googlesyndication.com" crossorigin="anonymous"></script>
+
     <style>
         :root {
             --bg-color: #0d1117;
@@ -253,6 +258,17 @@
             background-color: rgba(88, 166, 255, 0.05);
         }
 
+        footer a {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        footer a:hover {
+            color: var(--accent);
+        }
+
         @media (max-width: 600px) {
             .config-bar {
                 flex-direction: column;
@@ -291,11 +307,13 @@
         </header>
 
         <main>
+            <!-- User Input -->
             <section class="card">
                 <label for="raw-input">Enter Raw Text / Idea:</label>
                 <textarea id="raw-input" placeholder="Type your basic idea here (e.g., 'write an email asking for a raise')..."></textarea>
             </section>
 
+            <!-- Configuration Options -->
             <section class="config-bar">
                 <div class="style-selector">
                     <span class="label">Contextual Style:</span>
@@ -317,20 +335,10 @@
                 <button id="optimize-btn" class="btn primary-btn">Optimize Instruction</button>
             </section>
 
+            <!-- Final System Output -->
             <section class="card output-card">
                 <div class="output-header">
                     <label for="optimized-output">Optimized AI Prompt:</label>
                     <button id="copy-btn" class="btn secondary-btn" disabled>Copy to Clipboard</button>
                 </div>
                 <textarea id="optimized-output" readonly placeholder="Your optimized prompt will appear here..."></textarea>
-                <div id="toast" class="toast hidden">Copied to clipboard!</div>
-            </section>
-
-            <section class="card description-card">
-                <h2>About Contextual Styles</h2>
-                <div class="description-grid">
-                    <div class="desc-item" id="desc-expert">
-                        <h3>🎓 Expert Style</h3>
-                        <p>Applies an authoritative framework to your idea. It instructs the AI to look at structural hidden constraints, performance metrics, and optimization paths like a seasoned industry specialist.</p>
-                    </div>
-                    <div class="desc-item" id="desc-creative">
